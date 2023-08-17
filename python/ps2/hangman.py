@@ -215,11 +215,14 @@ def match_with_gaps(my_word, other_word):
     max_idx = len(my_word) - 1
     my_idx = 0
     other_idx = 0
-    unknown_letters = list()
+    known_letters = set()
 
     while my_idx <= max_idx:
         if my_word[my_idx] == "_" :
-            unknown_letters.append(other_word[other_idx])
+            
+            if other_word[other_idx] in known_letters :
+                return False
+            
             my_idx += 2
             other_idx += 1
 
@@ -228,13 +231,42 @@ def match_with_gaps(my_word, other_word):
                 return False
             
             else :
-                if my_word[my_idx] in unknown_letters :
-                    return False
-                
-                else :
-                    my_idx += 1
-                    other_idx += 1
+                known_letters.add(other_word[other_idx])
+                my_idx += 1
+                other_idx += 1
+                print(known_letters)
+    
     return True
+    
+    
+    
+    # word_without_s = my_word.replace(" ", "")
+    # if len(word_without_s) != len(other_word) :
+    #     return False
+    
+    # max_idx = len(my_word) - 1
+    # my_idx = 0
+    # other_idx = 0
+    # unknown_letters = list()
+
+    # while my_idx <= max_idx:
+    #     if my_word[my_idx] == "_" :
+    #         unknown_letters.append(other_word[other_idx])
+    #         my_idx += 2
+    #         other_idx += 1
+
+    #     else :
+    #         if my_word[my_idx] != other_word[other_idx] :
+    #             return False
+            
+    #         else :
+    #             if my_word[my_idx] in unknown_letters :
+    #                 return False
+                
+    #             else :
+    #                 my_idx += 1
+    #                 other_idx += 1
+    # return True
 
 
 

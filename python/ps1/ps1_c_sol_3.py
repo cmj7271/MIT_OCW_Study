@@ -49,7 +49,7 @@ if cost_to_pay - total_saving > 100 :
     print("It is not possible to pay the down payment in three years.")
 
 else :
-    while total_saving - cost_to_pay >= 100 or total_saving - cost_to_pay <= -100 :
+    while total_saving - cost_to_pay >= 100 or total_saving - cost_to_pay <= -100 :   # abs(total_saving - cost_to_pay) > 100
         if total_saving - cost_to_pay > 100 :
             portion_saved_max = portion_saved - 1
         # elif total_saving - cost_to_pay < -100 :
